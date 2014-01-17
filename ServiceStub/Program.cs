@@ -19,9 +19,12 @@ namespace ServiceStub
                 switch (args[0]) {
                     case "-c":
                         Log = Console.WriteLine;
-                        new Service().TestRun(args.Skip(1).ToArray());
+                        var svc = new Service();
+                        svc.TestRun(args.Skip(1).ToArray());
+                        Console.WriteLine("Running service...");
                         Console.WriteLine("Press any key to exit.");
                         Console.ReadKey();
+                        svc.Stop();
                         break;
                     case "-i":
                     case "-u":
